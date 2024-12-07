@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+provider "aws" {
+  region = "eu-central-1"
+}
+
 # Actively managed by us, by our Terraform project
 resource "aws_s3_bucket" "my_bucket" {
   bucket = var.bucket_name
