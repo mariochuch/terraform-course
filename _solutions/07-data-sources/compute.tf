@@ -13,6 +13,18 @@ data "aws_ami" "ubuntu" {
   }
 }
 
+data "aws_caller_identity" "current" {}
+
+data "aws_region" "current" {}
+
+output "current_user" {
+  value = data.aws_caller_identity.current
+}
+
+output "current_region" {
+  value = data.aws_region.current
+}
+
 output "ubuntu_name" {
   value = data.aws_ami.ubuntu.id
 }
@@ -23,7 +35,7 @@ resource "aws_instance" "web" {
   ami                         = data.aws_ami.ubuntu.id
   associate_public_ip_address = true
   instance_type               = "t2.micro"
-      root_block_device {
+  root_block_device {
     delete_on_termination = true
     volume_size           = 10
     volume_type           = "gp3"
