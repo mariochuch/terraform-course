@@ -23,6 +23,14 @@ data "aws_vpc" "prod_vpc" {
   }
 }
 
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+output "azs" {
+  value = data.aws_availability_zones.available
+}
+
 output "prod_vpc_id" {
   value = data.aws_vpc.prod_vpc.id
 }
