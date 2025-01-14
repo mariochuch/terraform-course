@@ -17,6 +17,16 @@ data "aws_caller_identity" "current" {}
 
 data "aws_region" "current" {}
 
+data "aws_vpc" "prod_vpc" {
+  tags = {
+    Env = "Prod"
+  }
+}
+
+output "prod_vpc_id" {
+  value = data.aws_vpc.prod_vpc.id
+}
+
 output "current_user" {
   value = data.aws_caller_identity.current
 }
