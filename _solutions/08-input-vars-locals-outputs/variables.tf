@@ -8,12 +8,19 @@ variable "ec2_instance_type" {
   }
 }
 
-variable "ec2_volume_type" {
-  type        = string
-  description = "Volume type between gp2 and gp3"
+variable "ec2_volume_config" {
+  type = object({
+    size = number
+    type = string
+  })
+  description = "The size and the type of root block volume for EC2 instances"
+  default = {
+    size = 10
+    type = "gp3"
+  }
 }
 
-variable "ec2_volume_size" {
-  type        = number
-  description = "The size in GB of root block volume attached to managed EC2 instances"
+variable "additional_tags" {
+  type    = map(string)
+  default = {}
 }
