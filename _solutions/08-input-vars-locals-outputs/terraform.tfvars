@@ -1,4 +1,4 @@
-ec2_instance_type = "t3.micro"
+ec2_instance_type = "t2.micro"
 
 ec2_volume_config = {
   size = 20
@@ -6,5 +6,5 @@ ec2_volume_config = {
 }
 
 additional_tags = {
-  "ValuesFrom" = "dev.terraform.tfvars"
+  "ValuesFrom" = "terraform.tfvars"
 }
