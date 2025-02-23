@@ -24,3 +24,8 @@ variable "additional_tags" {
   type    = map(string)
   default = {}
 }
+
+variable "my_sensitive_vale" {
+  type = string
+  sensitive = true
+}

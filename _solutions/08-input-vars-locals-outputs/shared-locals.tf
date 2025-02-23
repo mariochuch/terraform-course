@@ -3,6 +3,7 @@ locals {
   project_owner = "terraform-course"
   cost_centre   = 1234
   managed_by    = "Terraform"
+  
 }
 
 locals {
@@ -17,6 +18,7 @@ locals {
 output "s3_project_bucket_name" {
   value = aws_s3_bucket.project_bucket.bucket
   description = "The name of the S3 bucket"
+  sensitive = true
 }
 
 output "instance_arn" {
@@ -27,4 +29,9 @@ output "instance_arn" {
 output "s3_bucket_tags" {
   value = aws_s3_bucket.project_bucket.tags_all
   description = "List of tags added to s3 bucket"
+}
+
+output "sensitive_var" {
+  sensitive = true
+  value = var.my_sensitive_vale
 }
