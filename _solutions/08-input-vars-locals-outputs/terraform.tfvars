@@ -6,7 +6,7 @@ ec2_volume_config = {
 }
 
 additional_tags = {
-  "ValuesFrom" = "terraform.tfvars"
-  my_sensitive_vale = "This is my sensitive tag"
+  "ValuesFrom"         = "terraform.tfvars"
+  "my_sensitive_value" = "This is my sensitive tag"
 }
 
