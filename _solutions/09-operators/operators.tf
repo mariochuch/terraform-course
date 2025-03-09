@@ -3,7 +3,6 @@ locals {
   euqlity    = 2 != 2
   comparison = 2 < 1
   logical    = true || false
-
 }
 
 output "operators" {
