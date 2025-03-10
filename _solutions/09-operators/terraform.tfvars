@@ -21,3 +21,23 @@ numbers_map = {
   four  = 4
   five  = 5
 }
+
+users = [{
+  userName = "Mario"
+  role     = "admin"
+  },
+  {
+    userName = "Mario"
+    role     = "nonAdmin"
+  },
+  {
+    userName = "Sylwia"
+    role     = "regular"
+  },
+  {
+    userName = "Maks"
+    role     = "superuser"
+  }
+]
+
+user_to_output = "Mario"

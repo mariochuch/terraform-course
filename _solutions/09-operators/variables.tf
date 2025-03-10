@@ -12,3 +12,14 @@ variable "object_list" {
 variable "numbers_map" {
   type = map(number)
 }
+
+variable "users" {
+  type = list(object({
+    userName = string
+    role     = string
+  }))
+}
+
+variable "user_to_output" {
+  type = string
+}
