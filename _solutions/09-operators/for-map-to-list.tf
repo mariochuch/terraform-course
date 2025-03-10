@@ -4,11 +4,11 @@ locals {
 
   users_map2 = {
     for userName, roles in local.users_map : userName => {
-        roles = roles
+      roles = roles
     }
   }
 
-  user_names_from_map = [ for userName, roles in local.users_map : userName ]
+  user_names_from_map = [for userName, roles in local.users_map : userName]
 }
 
 output "users_map" {
@@ -20,8 +20,8 @@ output "users_map2" {
 }
 
 output "user_names_from_map" {
-  value = local.user_names_from_map 
-  }
+  value = local.user_names_from_map
+}
 
 output "user_to_output_roles" {
   value = local.users_map2[var.user_to_output].roles
