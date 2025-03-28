@@ -10,3 +10,12 @@ variable "ec2_instance_count" {
   default     = 1
   description = "value of ec2 instance count"
 }
+
+variable "ec2_instance_config_list" {
+  type = list(object({
+    instance_type = string
+    ami           = string
+  }))
+
+  default = []
+}
