@@ -17,7 +17,7 @@ resource "aws_instance" "from_list" {
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.main[0].id
   tags = {
-    Name    = "${local.project}-0"
+    Name    = "${local.project}-${count.index}"
     Project = local.project
   }
 }
