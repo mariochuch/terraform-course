@@ -46,14 +46,14 @@ variable "ec2_instance_config_map" {
 
   validation {
         condition = alltrue([
-          for config in var.ec2_instance_config_map : contains(["t2.micro"], config.instance_type)
+          for config in values(var.ec2_instance_config_map) : contains(["t2.micro"], config.instance_type)
         ])
         error_message = "Only t2.micro instances are allowed."
       }
 
   validation {
     condition = alltrue([
-      for config in var.ec2_instance_config_map :
+      for config in values(var.ec2_instance_config_map) :
       contains(["ubuntu", "nginx"], config.ami)
     ])
 
