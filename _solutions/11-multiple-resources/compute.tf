@@ -23,10 +23,10 @@ resource "aws_instance" "from_list" {
 }
 
 resource "aws_instance" "from_map" {
-  for_each = var.ec2_instance_config_map
-  ami      = local.ami_ids[each.value.ami]
+  for_each      = var.ec2_instance_config_map
+  ami           = local.ami_ids[each.value.ami]
   instance_type = each.value.instance_type
-  subnet_id = aws_subnet.main[0].id
+  subnet_id     = aws_subnet.main[0].id
 
   tags = {
     Name    = "${local.project}-${each.key}"
