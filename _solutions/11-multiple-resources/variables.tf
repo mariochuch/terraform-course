@@ -1,8 +1,14 @@
-variable "subnet_count" {
-  description = "Number of subnets to create"
-  type        = number
-  default     = 2
+variable "subnet_config" {
+  type        = map(object({
+    cidr_block = string
+  }))
 
+  validation {
+    condition = alltrue([
+      for config in values(var.subnet_config) : can(cidrnetmask(config.cidr_block))
+    ])
+    error_message = "At least one CIDR block is not valid."
+  }
 }
 
 variable "ec2_instance_count" {
@@ -62,17 +68,4 @@ variable "ec2_instance_config_map" {
     error_message = "At least one of the provided \"ami\" values is not supported.\nSupported \"ami\" values: \"ubuntu\", \"nginx\"."
   }
 
-}
-
-variable "subnet_config" {
-  type = map(object({
-    cidr_block = string
-  }))
-
-  validation {
-    condition = alltrue([
-      for config in values(var.subnet_config) : can(cidrnetmask(config.cidr_block))
-    ])
-    error_message = "At least one of the provided CIDR blocks is not valid."
-  }
 }
