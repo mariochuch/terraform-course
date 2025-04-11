@@ -8,6 +8,6 @@ users:
 - username: alice
   roles: [readonly, developer]
 - username: jack
-  roles: [admin,auditor]
+  roles: [admin, auditor]
 - username: mario
   roles: [readonly]
