@@ -33,6 +33,7 @@ output "policies" {
 }
 
 data "aws_iam_policy_document" "assumed_role_policy" {
+  for_each = toset(keys(local.role_policies))
   statement {
     actions = ["sts:AssumeRole"]
     principals {
@@ -45,7 +46,8 @@ data "aws_iam_policy_document" "assumed_role_policy" {
 resource "aws_iam_role" "roles" {
   for_each           = toset(keys(local.role_policies))
   name               = each.key
-  assume_role_policy = data.aws_iam_policy_document.assumed_role_policy.json
+  assume_role_policy = data.aws_iam_policy_document.assumed_role_policy[
+                        each.value].json
 }
 
 data "aws_iam_policy" "managed_policies" {
