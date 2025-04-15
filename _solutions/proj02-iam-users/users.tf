@@ -1,11 +1,7 @@
 locals {
   users_from_yaml = yamldecode(file("${path.module}/user-roles.yaml")).users
   users_map = {
-    for user_config in local.users_from_yaml : user_config.username => user_config.roles...
-  }
-
-  flattened_users_map = {
-    for user, roles in local.users_map : user => flatten(roles)
+    for user_config in local.users_from_yaml : user_config.username => user_config.roles
   }
 }
 
@@ -36,9 +32,4 @@ output "passwords" {
 
 output "output-users" {
   value = local.users_from_yaml
-}
-
-output "users_map" {
-  value = local.flattened_users_map
-  
 }
